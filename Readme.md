@@ -5,9 +5,9 @@ and/or `aws cloudformation update-stack`, and that uses `create-stack` if the
 stack does not exist, and `update-stack` otherwise.
 
 The script also computes a hash of your parameters, stack name, template body,
-tags (if any), and region (if any) and passes it as the
-[`--client-request-token`](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html),
-making subsequent "updates" with no changed config to be noops.
+tags (if any), and region (if any) and tags your stack with it. Subsequent
+updates will not be applied if the computed hash is the same as the tag on the
+current version of the stack.
 
 ## Assumptions
 
